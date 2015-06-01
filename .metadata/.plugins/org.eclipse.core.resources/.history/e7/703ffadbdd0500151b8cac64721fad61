@@ -1,0 +1,8 @@
+package com.bignerdranch.android.criminalintent;
+
+public class CriminalIntentJSONSerializer {
+
+	
+	private Context mContext;
+	private string mFileName;
+}

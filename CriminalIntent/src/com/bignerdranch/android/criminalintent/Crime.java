@@ -12,11 +12,14 @@ public class Crime {
     private static final String JSON_TITLE = "title";
     private static final String JSON_DATE = "date";
     private static final String JSON_SOLVED = "solved";
+    private static final String JSON_PHOTO = "photo";
     
+        
     private UUID mId;
     private String mTitle;
     private Date mDate;
     private boolean mSolved;
+    private NewPhoto mPhoto;
     
     public Crime() {
         mId = UUID.randomUUID();
@@ -24,10 +27,14 @@ public class Crime {
     }
 
     public Crime(JSONObject json) throws JSONException {
+    	
         mId = UUID.fromString(json.getString(JSON_ID));
         mTitle = json.getString(JSON_TITLE);
         mSolved = json.getBoolean(JSON_SOLVED);
         mDate = new Date(json.getLong(JSON_DATE));
+        if(json.has(JSON_PHOTO)){
+        	mPhoto = new NewPhoto(json.getJSONObject(JSON_PHOTO));
+        }
     }
 
     public JSONObject toJSON() throws JSONException {
@@ -36,6 +43,9 @@ public class Crime {
         json.put(JSON_TITLE, mTitle);
         json.put(JSON_DATE, mDate.getTime());
         json.put(JSON_SOLVED, mSolved);
+        if(mPhoto != null)
+        	json.put(JSON_PHOTO, mPhoto.toJSON());
+        
         return json;
     }
 
@@ -70,6 +80,14 @@ public class Crime {
 
     public void setDate(Date date) {
         mDate = date;
+    }
+    
+    public NewPhoto getPhoto(){
+    	return mPhoto;
+    }
+    
+    public void setPhoto(NewPhoto photo){
+    	mPhoto = photo;
     }
     
     

@@ -1,0 +1,13 @@
+package com.bignerdranch.android.criminalintent;
+
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+
+public class ImageFragment extends DialogFragment {
+
+	public static final String EXTRA_IMAGE_PATH = "com.bignerdranch.android.criminalintent";
+	
+	public static ImageFragment newInstance(String imagePath){
+		
+	}
+}

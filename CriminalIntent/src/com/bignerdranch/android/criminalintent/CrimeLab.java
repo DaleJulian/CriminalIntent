@@ -49,12 +49,13 @@ public class CrimeLab {
         saveCrimes();
     }
 
-    public void deleteCrime(Crime c){
-    	mCrimes.remove(c);
-    	saveCrimes();
-    }
     public ArrayList<Crime> getCrimes() {
         return mCrimes;
+    }
+
+    public void deleteCrime(Crime c) {
+        mCrimes.remove(c);
+        saveCrimes();
     }
 
     public boolean saveCrimes() {
@@ -68,3 +69,4 @@ public class CrimeLab {
         }
     }
 }
+

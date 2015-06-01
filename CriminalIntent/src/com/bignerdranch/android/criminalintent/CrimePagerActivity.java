@@ -9,9 +9,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View;
 
 public class CrimePagerActivity extends FragmentActivity {
     ViewPager mViewPager;
@@ -47,7 +44,4 @@ public class CrimePagerActivity extends FragmentActivity {
             } 
         }
     }
-    
-   
-
 }

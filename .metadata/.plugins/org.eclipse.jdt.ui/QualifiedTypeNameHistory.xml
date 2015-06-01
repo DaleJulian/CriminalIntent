@@ -4,13 +4,18 @@
 <fullyQualifiedTypeName name="android.view.MenuInflater"/>
 <fullyQualifiedTypeName name="android.annotation.TargetApi"/>
 <fullyQualifiedTypeName name="android.os.Build"/>
-<fullyQualifiedTypeName name="android.os.Build.VERSION"/>
 <fullyQualifiedTypeName name="android.os.Build.VERSION_CODES"/>
 <fullyQualifiedTypeName name="android.view.MenuItem"/>
 <fullyQualifiedTypeName name="android.support.v4.app.NavUtils"/>
-<fullyQualifiedTypeName name="android.view.ContextMenu"/>
-<fullyQualifiedTypeName name="android.view.ContextMenu.ContextMenuInfo"/>
-<fullyQualifiedTypeName name="com.bignerdranch.android.criminalintent.R.menu"/>
 <fullyQualifiedTypeName name="android.view.LayoutInflater"/>
 <fullyQualifiedTypeName name="android.R"/>
+<fullyQualifiedTypeName name="android.view.ContextMenu"/>
+<fullyQualifiedTypeName name="android.view.View"/>
+<fullyQualifiedTypeName name="android.view.ContextMenu.ContextMenuInfo"/>
+<fullyQualifiedTypeName name="android.widget.AdapterView.AdapterContextMenuInfo"/>
+<fullyQualifiedTypeName name="android.os.Build.VERSION"/>
+<fullyQualifiedTypeName name="android.widget.AbsListView.MultiChoiceModeListener"/>
+<fullyQualifiedTypeName name="android.view.ActionMode"/>
+<fullyQualifiedTypeName name="com.bignerdranch.android.criminalintent.R.menu"/>
+<fullyQualifiedTypeName name="com.bignerdranch.android.criminalintent.R.id"/>
 </qualifiedTypeNameHistroy>

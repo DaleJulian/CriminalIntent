@@ -8,4 +8,9 @@
 <fullyQualifiedTypeName name="android.os.Build.VERSION_CODES"/>
 <fullyQualifiedTypeName name="android.view.MenuItem"/>
 <fullyQualifiedTypeName name="android.support.v4.app.NavUtils"/>
+<fullyQualifiedTypeName name="android.view.ContextMenu"/>
+<fullyQualifiedTypeName name="android.view.ContextMenu.ContextMenuInfo"/>
+<fullyQualifiedTypeName name="com.bignerdranch.android.criminalintent.R.menu"/>
+<fullyQualifiedTypeName name="android.view.LayoutInflater"/>
+<fullyQualifiedTypeName name="android.R"/>
 </qualifiedTypeNameHistroy>

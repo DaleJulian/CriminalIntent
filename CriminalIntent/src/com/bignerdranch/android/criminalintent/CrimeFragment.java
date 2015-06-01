@@ -22,11 +22,9 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
-@TargetApi(11)
 
 public class CrimeFragment extends Fragment {
     public static final String EXTRA_CRIME_ID = "criminalintent.CRIME_ID";
-    
     private static final String DIALOG_DATE = "date";
     private static final int REQUEST_DATE = 0;
 
@@ -51,7 +49,7 @@ public class CrimeFragment extends Fragment {
         
         UUID crimeId = (UUID)getArguments().getSerializable(EXTRA_CRIME_ID);
         mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
-        
+
         setHasOptionsMenu(true);
     }
 
@@ -60,19 +58,24 @@ public class CrimeFragment extends Fragment {
     }
 
     @Override
+    @TargetApi(11)
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_crime, parent, false);
- 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
-        	if(NavUtils.getParentActivityName(getActivity()) != null){
-        		getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
-        	}
+        
+        if (mCrime.getTitle() != null) {
+            getActivity().setTitle(mCrime.getTitle());
         }
+        
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        
         mTitleField = (EditText)v.findViewById(R.id.crime_title);
         mTitleField.setText(mCrime.getTitle());
         mTitleField.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence c, int start, int before, int count) {
                 mCrime.setTitle(c.toString());
+                getActivity().setTitle(mCrime.getTitle());
             }
 
             public void beforeTextChanged(CharSequence c, int start, int count, int after) {
@@ -87,13 +90,13 @@ public class CrimeFragment extends Fragment {
         mDateButton = (Button)v.findViewById(R.id.crime_date);
         updateDate();
         mDateButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {                	            	
+            public void onClick(View v) {
                 FragmentManager fm = getActivity()
                         .getSupportFragmentManager();
                 DatePickerFragment dialog = DatePickerFragment
                     .newInstance(mCrime.getDate());
                 dialog.setTargetFragment(CrimeFragment.this, REQUEST_DATE);
-                dialog.show(fm, DIALOG_DATE);              	
+                dialog.show(fm, DIALOG_DATE);
             }
         });
 
@@ -104,11 +107,9 @@ public class CrimeFragment extends Fragment {
                 // set the crime's solved property
                 mCrime.setSolved(isChecked);
             }
-        });
-
- 
+        });       
         
-        return v;
+        return v; 
     }
 
     @Override
@@ -120,18 +121,21 @@ public class CrimeFragment extends Fragment {
             updateDate();
         }
     }
-    
+
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-    	switch(item.getItemId()){
-    	case android.R.id.home:
-    		if(NavUtils.getParentActivityName(getActivity()) != null){
-    			NavUtils.navigateUpFromSameTask(getActivity());
-    		}
-    		return true;
-    	default:
-    		return super.onOptionsItemSelected(item);
-    	}
-    	
+    public void onPause() {
+        super.onPause();
+        CrimeLab.get(getActivity()).saveCrimes();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(getActivity());
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        } 
     }
 }

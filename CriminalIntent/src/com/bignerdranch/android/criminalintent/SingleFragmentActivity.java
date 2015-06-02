@@ -9,10 +9,14 @@ import android.support.v4.app.FragmentManager;
 public abstract class SingleFragmentActivity extends FragmentActivity {
     protected abstract Fragment createFragment();
 
+    
+
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fragment);
+        //setContentView(R.layout.activity_fragment);
+        setContentView(getLayoutResId());
         FragmentManager manager = getSupportFragmentManager();
         Fragment fragment = manager.findFragmentById(R.id.fragmentContainer);
 
@@ -22,5 +26,9 @@ public abstract class SingleFragmentActivity extends FragmentActivity {
                 .add(R.id.fragmentContainer, fragment)
                 .commit();
         }
+    }
+    
+    protected int getLayoutResId() {
+    	return R.layout.activity_fragment;
     }
 }
